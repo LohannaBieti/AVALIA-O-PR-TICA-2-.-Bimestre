@@ -111,3 +111,27 @@ State Pattern: O uso do padrão State é adequado aqui porque a usina possui est
 Condições de Transição: Cada transição de estado é validada de forma independente, e o comportamento da usina depende das condições atuais, como temperatura e radiação.
 
 Modo Manutenção: O modo manutenção funciona como um bloque
+
+
+Questão 4 - Sistema de Validação de Documentos
+Descrição
+Contexto
+Desenvolva um sistema de validação de documentos fiscais eletrônicos (NF-e) que precisa aplicar múltiplas regras de validação em cadeia.
+
+Problema
+Cada validador especializado verifica um aspecto específico do documento
+A cadeia deve suportar validações condicionais (se validador X falhar, pule Y)
+Implemente um mecanismo de "circuit breaker" que interrompa a cadeia após 3 validações falharem
+Adicione capacidade de rollback para validadores que modificam o documento
+Validadores Requeridos
+Validador de Schema XML contra XSD
+Validador de Certificado Digital (expiração e revogação)
+Validador de Regras Fiscais (cálculo de impostos)
+Validador de Banco de dados (duplicidade de número)
+Validador de Serviço SEFAZ (consulta online)
+Restrições
+Os validadores 3 e 5 devem ser executados apenas se os anteriores passarem
+O validador 4 deve fazer rollback da inserção se validações subsequentes falharem
+Implemente timeout individual para cada validador
+Justificativa do Padrão
+Decidi aplicar o padrão de projeto Chain of Responsibility, porque distribui a responsabilidade entre vários objetos de forma sequencial. Além disso, evita código com muitos if/else encadeados. Dessa forma, consigo dividir de forma adequada as validações por tipo, seguindo o princípio da Responsabilidade Única (SRP) do SOLID, e, por conta disso, agilizar operações de rollback por meio do conhecimento indivual de cada tipo de validação.
