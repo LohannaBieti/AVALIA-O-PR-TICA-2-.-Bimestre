@@ -2,7 +2,7 @@ QUESTÃO 1:
 Contexto: Você está desenvolvendo um sistema de processamento de dados para uma empresa financeira que lida com diferentes tipos de análise de risco. O sistema precisa calcular métricas de risco usando diferentes algoritmos (Value at Risk, Expected Shortfall, Stress Testing) que podem mudar dinamicamente durante a execução.
 
 Problema:
-- Cada algoritmo de risco deve ser intercambiável em tempo de execução
+- Cada algoritmo de risco deve ser intercambiável em tempo de execução 
 - Os algoritmos devem ser capazes de compartilhar um contexto complexo com múltiplos parâmetros financeiros
 - Deve ser possível trocar de algoritmo de acordo com a necessidade de negócios
   
